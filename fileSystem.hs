@@ -148,7 +148,7 @@ looper path root = loop [] root root
                         else if take 4 line == "cd /" then do loop (splitToList '/' (drop 4 line)) root (cd (drop 4 line) root)
                         else if take 3 line == "cd " then do loop (path ++ splitToList '/' (drop 3 line)) root (cd (drop 3 line) currentRoot)
                         else if take 2 line == "rm" then do loop path (buildDirectory root currentRoot (rmFromTree (splitToList ' ' line) currentRoot)) (rmFromTree (splitToList ' ' line) currentRoot)
-                        else if line == "getName" then do print $ getName currentRoot
+                        else if line == "dirname" then do print $ getName currentRoot
                                                           loop path root currentRoot
                         else if line == "pwd" then do pathDo path
                                                       loop path root currentRoot
